@@ -5,7 +5,7 @@ import java.util.Scanner; // Import the Scanner class to read text files
 public class PigLatin {
     
     public void tester() {
-        // String[] lines = loadStrings("words.txt");
+        String[] lines = loadStrings("words.txt");
         String[] lines = new String[8]; 
         try{
             File myFile = new File("words.txt");
@@ -28,21 +28,48 @@ public class PigLatin {
 	    }
     }
     public int findFirstVowel(String sWord) {
-        //precondition: sWord is a valid String of length greater than 0.
-        //postcondition: returns the position of the first vowel in sWord.  If there are no vowels, returns -1
-	    // your code goes here
-        return -1;
-    }
+	        int index = 0;
+	  if (sWord.length() == 0)
+	    index = -1;
+	  for (int i = 0; i < sWord.length(); i++) {
+	    if (sWord.substring(i, i + 1).equals("a")) {
+	      index = i;
+	      break;
+	    }
+	    if (sWord.substring(i, i + 1).equals("e")) {
+	      index = i;
+	      break;
+	    }
+	    if (sWord.substring(i, i + 1).equals("i")) {
+	      index = i;
+	      break;
+	    }
+	    if (sWord.substring(i, i + 1).equals("o")) {
+	      index = i;
+	      break;
+	    }
+	    if (sWord.substring(i, i + 1).equals("u")) {
+	      index = i;
+	      break;
+	    }
+	    if (i + 1 == sWord.length()) {
+	      index = -1;
+	      break;
+	    }
+	  }
+	  return index;
+	}
 
     public String pigLatin(String sWord) {
-        //precondition: sWord is a valid String of length greater than 0
-        //postcondition: returns the pig latin equivalent of sWord
-        // more code should go here
-	    if(findFirstVowel(sWord) == -1) {
-		    return sWord + "ay";
-	    }
-	    else {
-		return "ERROR!";
-	    }
-    }
+	     if (findFirstVowel(sWord) == -1)
+	  {
+	    return sWord + "ay";
+	  }
+	  if (sWord.substring(0, 2).equals("qu"))
+	    return sWord.substring(2) + sWord.substring(0, 2) + "ay";
+	  else
+	  {
+	    return sWord.substring(findFirstVowel(sWord)) + sWord.substring(0, findFirstVowel(sWord)) + "ay";
+	  }
+	}
 }//end PigLatin class
