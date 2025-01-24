@@ -28,37 +28,14 @@ public class PigLatin {
 	    }
     }
     public int findFirstVowel(String sWord) {
-	  int index = 0;
-	  if (sWord.length() == 0)
-	    index = -1;
 	  for (int i = 0; i < sWord.length(); i++) {
-	    if (sWord.substring(i, i + 1).equals("a")) {
-	      index = i;
-	      break;
+	    if (sWord.substring(i, i + 1).equals("a") || sWord.substring(i, i + 1).equals("e") || sWord.substring(i, i + 1).equals("i") || sWord.substring(i, i + 1).equals("o") || sWord.substring(i, i + 1).equals("u")) {
+	 	return i;
+		break;
 	    }
-	    if (sWord.substring(i, i + 1).equals("e")) {
-	      index = i;
-	      break;
-	    }
-	    if (sWord.substring(i, i + 1).equals("i")) {
-	      index = i;
-	      break;
-	    }
-	    if (sWord.substring(i, i + 1).equals("o")) {
-	      index = i;
-	      break;
-	    }
-	    if (sWord.substring(i, i + 1).equals("u")) {
-	      index = i;
-	      break;
-	    }
-	    if (i + 1 == sWord.length()) {
-	      index = -1;
-	      break;
+	      return -1;
 	    }
 	  }
-	  return index;
-	}
 
     public String pigLatin(String sWord) {
 	  if (findFirstVowel(sWord) == -1)
